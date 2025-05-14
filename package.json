@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "submodule:sync": "bash scripts/sync-submodules.sh",
+    "deploy": "surge dist apathetic-learning.surge.sh",
+    "spk-legacy": "bash scripts/sync-submodule.sh packages/spoon-kit-legacy",
+    "spk-react": "bash scripts/sync-submodule.sh packages/spoon-kit-react",
+    "spk-update": "git submodule foreach 'git pull origin main' && git add . && git commit -m 'Update all submodules'",
     "preview": "vite preview"
   },
   "dependencies": {
