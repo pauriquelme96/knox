@@ -33,13 +33,18 @@ fi
 cd $SUBMODULE_PATH
 
 # Stash de los cambios
-git stash -u
+HAS_CHANGES=$(git status --porcelain)
+if [ -n "$HAS_CHANGES" ]; then
+  git stash -u
+fi
 
 git checkout main
 git pull origin main
 git submodule update --remote --merge
 
-git stash pop
+if [ -n "$HAS_CHANGES" ]; then
+  git stash pop
+fi
 
 # Volver al repo principal
 cd $CURRENT_DIR
