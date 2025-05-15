@@ -9,6 +9,13 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
+if [ "$(git branch --show-current)" != "main" ]; then
+  echo ""
+  echo "❌  You are not on the main branch"
+  echo ""
+  exit 1
+fi
+
 # Bajar los cambios del submódulo
 cd $SUBMODULE_PATH
 git checkout main
@@ -22,5 +29,5 @@ if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git add $SUBMODULE_PATH
   git commit -m "Submodule: Sync $SUBMODULE_PATH"
   git push origin main
-  # git submodule update --remote
+  git submodule update --remote
 fi
