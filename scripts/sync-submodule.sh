@@ -10,12 +10,12 @@ if [ "$(git branch --show-current)" != "main" ]; then
   exit 1
 fi
 
-# Verificar que no hay cambios pendientes de bajar
+# Verificar que no hay cambios pendientes de bajar/subir
 git fetch origin main
 
 if [ $(git rev-list HEAD...origin/main --count) -gt 0 ]; then
   echo ""
-  echo "⚠️ There are pending commits, please execute 'git pull' before syncing"
+  echo "⚠️  There are commits pending to pull/push in main"
   echo ""
   exit 1
 fi
