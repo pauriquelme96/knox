@@ -9,6 +9,7 @@ fi
 
 # Bajar los cambios del submódulo
 cd $SUBMODULE_PATH
+git checkout main
 git pull origin main
 
 # Volver al repo principal
@@ -20,8 +21,7 @@ if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git checkout main
   git add $SUBMODULE_PATH
   git commit -m "Submodule: Sync $SUBMODULE_PATH"
-  git push
-  sleep 2
+  git push origin main
   git checkout $CURRENT_BRANCH
 fi
 
