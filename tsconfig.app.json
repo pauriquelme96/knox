@@ -22,11 +22,11 @@
     "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@spoon-kit-legacy/*": ["../packages/spoon-kit-legacy/*"],
-      "@spoon-kit-react/*": ["../packages/spoon-kit-react/*"]
+      "@spoon-kit-legacy/*": ["./packages/spoon-kit-legacy/*"],
+      "@spoon-kit-react/*": ["./packages/spoon-kit-react/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "packages"]
 }
