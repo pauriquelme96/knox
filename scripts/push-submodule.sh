@@ -40,6 +40,18 @@ fi
 
 # Cambios en el submódulo
 cd $SUBMODULE_PATH
+
+# Verificar que no hay referencias pendientes en le submódulo
+git fetch origin main
+
+if [ $(git rev-list HEAD...origin/main --count) -gt 0 ]; then
+  echo ""
+  echo "⚠️  Submodule has pending references to pull/push"
+  echo ""
+  exit 1
+fi
+
+# Actualizar referencia del submódulo
 git checkout main
 
 if [ -n "$(git status --porcelain)" ]; then
@@ -51,7 +63,7 @@ fi
 # Volver al repo principal
 cd $CURRENT_DIR
 
-# Actualizar referencia
+# Actualizar referencia del repo principal
 if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git add $SUBMODULE_PATH
   git commit -m "Update submodule: $COMMIT_MESSAGE"
