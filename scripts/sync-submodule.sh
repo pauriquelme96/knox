@@ -20,7 +20,8 @@ if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git checkout main
   git add $SUBMODULE_PATH
   git commit -m "Submodule: Sync $SUBMODULE_PATH"
-  git push origin main
+  git push
+  sleep 2
   git checkout $CURRENT_BRANCH
 fi
 
