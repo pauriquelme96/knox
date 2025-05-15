@@ -23,6 +23,7 @@ if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git commit -m "Submodule: Sync $SUBMODULE_PATH"
   git push origin main
   git checkout $CURRENT_BRANCH
+  git submodule update
 fi
 
 if [ -n "$UNCOMMITTED_CHANGES" ]; then
