@@ -33,7 +33,7 @@ fi
 cd $SUBMODULE_PATH
 git checkout main
 git pull origin main
-git submodule update --remote --merge $SUBMODULE_PATH
+git submodule update --remote --merge
 
 # Volver al repo principal
 cd $CURRENT_DIR
