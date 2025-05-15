@@ -2,13 +2,7 @@
 
 SUBMODULE_PATH=${1:-"lib/submodule"}
 
-#if [ -n "$(git status --porcelain)" ]; then
-#  echo ""
-#  echo "⚠️  Warning you have uncommitted changes"
-#  echo ""
-#  exit 1
-#fi
-
+# Verificar que estemos en la rama principal
 if [ "$(git branch --show-current)" != "main" ]; then
   echo ""
   echo "❌  You are not on the main branch"
@@ -16,14 +10,18 @@ if [ "$(git branch --show-current)" != "main" ]; then
   exit 1
 fi
 
-# Actualizar referencia del repo principal
-#git pull origin main
+# Verificar que no hay cambios pendientes de bajar
+git fetch origin main
+
+if [ $(git rev-list HEAD...origin/main --count) -gt 0 ]; then
+  echo ""
+  echo "⚠️ There are pending commits, please execute 'git pull' before syncing"
+  echo ""
+  exit 1
+fi
 
 # Bajar los cambios del submódulo
 git submodule update --remote --merge $SUBMODULE_PATH
-#cd $SUBMODULE_PATH
-#git checkout main
-#git pull origin main
 
 # Volver al repo principal
 cd - >/dev/null
@@ -33,5 +31,4 @@ if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git add $SUBMODULE_PATH
   git commit -m "Submodule: Sync $SUBMODULE_PATH"
   git push origin main
-  #git submodule update --remote
 fi
