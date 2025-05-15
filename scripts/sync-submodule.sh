@@ -31,9 +31,15 @@ fi
 
 # Bajar los cambios del submódulo
 cd $SUBMODULE_PATH
+
+# Stash de los cambios
+git stash -u
+
 git checkout main
 git pull origin main
 git submodule update --remote --merge
+
+git stash pop
 
 # Volver al repo principal
 cd $CURRENT_DIR
