@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CURRENT_DIR=$(pwd)
 SUBMODULE_PATH=${1:-"lib/submodule"}
 
 # Verificar que estemos en la rama principal
@@ -24,7 +25,7 @@ fi
 git submodule update --remote --merge $SUBMODULE_PATH
 
 # Volver al repo principal
-cd - >/dev/null
+cd $CURRENT_DIR
 
 # Actualizar referencia del submódulo
 if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
