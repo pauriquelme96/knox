@@ -12,7 +12,7 @@
     "sub:push-spk-react": "bash scripts/push-submodule-changes.sh packages/spoon-kit-react",
     "sub:sync": "git submodule foreach 'git pull origin main' && git add . && git commit -m 'Sync all submodules'",
     "sub:safe-sync": "bash scripts/safe-sync-submodules.sh",
-    "sub:init": "git submodule update --init --recursive ",
+    "sub:init": "git submodule update --init --recursive && git submodule foreach 'git checkout main'",
     "preview": "vite preview"
   },
   "dependencies": {
