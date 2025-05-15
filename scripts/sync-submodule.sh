@@ -15,6 +15,8 @@ if [ "$(git branch --show-current)" != "main" ]; then
   echo ""
   exit 1
 fi
+# Actualizar referencia del repo principal
+git pull origin main
 
 # Bajar los cambios del submódulo
 cd $SUBMODULE_PATH
