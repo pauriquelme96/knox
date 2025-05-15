@@ -8,12 +8,15 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "deploy": "surge dist apathetic-learning.surge.sh",
-    "spk-legacy": "bash scripts/sync-submodule.sh packages/spoon-kit-legacy",
-    "spk-react": "bash scripts/sync-submodule.sh packages/spoon-kit-react",
-    "spk-update": "git submodule foreach 'git pull origin main' && git add . && git commit -m 'Update all submodules'",
+    "sub:push-spk-legacy": "bash scripts/push-submodule-changes.sh packages/spoon-kit-legacy",
+    "sub:push-spk-react": "bash scripts/push-submodule-changes.sh packages/spoon-kit-react",
+    "sub:sync": "git submodule foreach 'git pull origin main' && git add . && git commit -m 'Sync all submodules'",
+    "sub:safe-sync": "bash scripts/safe-sync-submodules.sh",
+    "sub:init": "git submodule update --init --recursive ",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@preact/signals-core": "^1.8.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

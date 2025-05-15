@@ -1,6 +1,3 @@
-push-pkg.sh
-pull-pkg.sh
-
 # Logs
 logs
 *.log
