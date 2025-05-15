@@ -30,6 +30,9 @@ if [ $(git rev-list HEAD...origin/main --count) -gt 0 ]; then
 fi
 
 # Bajar los cambios del submódulo
+cd $SUBMODULE_PATH
+git checkout main
+git pull origin main
 git submodule update --remote --merge $SUBMODULE_PATH
 
 # Volver al repo principal
