@@ -1,7 +1,15 @@
 #!/bin/bash
 
 CURRENT_DIR=$(pwd)
-SUBMODULE_PATH=${1:-"lib/submodule"}
+SUBMODULE_PATH=${1}
+
+#Verifica que SUBMODULE_PATH no esté vacío
+if [ -z "$SUBMODULE_PATH" ]; then
+  echo ""
+  echo "❌  Submodule path is required"
+  echo ""
+  exit 1
+fi
 
 # Verificar que estemos en la rama principal
 if [ "$(git branch --show-current)" != "main" ]; then
