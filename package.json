@@ -12,8 +12,7 @@
     "sub:push-spk-react": "bash scripts/push-submodule.sh packages/spoon-kit-react",
     "sub:sync": "bash scripts/sync-submodule.sh packages/spoon-kit-legacy && bash scripts/sync-submodule.sh packages/spoon-kit-react",
     "sub:init": "git submodule update --init --recursive && git submodule foreach 'git checkout main'",
-    "preview": "vite preview",
-    "change": "change-test"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@preact/signals-core": "^1.8.0",
