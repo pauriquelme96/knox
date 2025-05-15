@@ -16,6 +16,7 @@ fi
 
 # Cambios en el submódulo
 cd $SUBMODULE_PATH
+git checkout main
 
 # Bajar los cambios del submódulo
 # ...
