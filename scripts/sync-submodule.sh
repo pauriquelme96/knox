@@ -2,12 +2,12 @@
 
 SUBMODULE_PATH=${1:-"lib/submodule"}
 
-if [ -n "$(git status --porcelain)" ]; then
-  echo ""
-  echo "⚠️  Warning you have uncommitted changes"
-  echo ""
-  exit 1
-fi
+#if [ -n "$(git status --porcelain)" ]; then
+#  echo ""
+#  echo "⚠️  Warning you have uncommitted changes"
+#  echo ""
+#  exit 1
+#fi
 
 if [ "$(git branch --show-current)" != "main" ]; then
   echo ""
@@ -17,12 +17,13 @@ if [ "$(git branch --show-current)" != "main" ]; then
 fi
 
 # Actualizar referencia del repo principal
-git pull origin main
+#git pull origin main
 
 # Bajar los cambios del submódulo
-cd $SUBMODULE_PATH
-git checkout main
-git pull origin main
+git submodule update --remote --merge $SUBMODULE_PATH
+#cd $SUBMODULE_PATH
+#git checkout main
+#git pull origin main
 
 # Volver al repo principal
 cd - >/dev/null
@@ -32,5 +33,5 @@ if [ -n "$(git status --porcelain $SUBMODULE_PATH)" ]; then
   git add $SUBMODULE_PATH
   git commit -m "Submodule: Sync $SUBMODULE_PATH"
   git push origin main
-  git submodule update --remote
+  #git submodule update --remote
 fi
