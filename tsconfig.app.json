@@ -24,6 +24,11 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
+      "@components/*": ["src/components/*"],
+      "@services/*": ["src/services/*"],
+      "@pages/*": ["src/pages/*"],
+      "@domains/*": ["src/domains/*"],
+      "@spoonkit/*": ["./packages/spoonkit/*"],
       "@spoon-kit-legacy/*": ["./packages/spoon-kit-legacy/*"],
       "@spoon-kit-react/*": ["./packages/spoon-kit-react/*"]
     }
