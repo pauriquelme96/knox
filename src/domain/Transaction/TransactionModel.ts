@@ -1,17 +1,15 @@
-import { field } from "@spoon-kit-legacy/domain/Field";
-import { ModelValues } from "@spoon-kit-legacy/types/ModelTypes";
+import { Infer } from "@spoonkit/Infer";
+import { state } from "@spoonkit/signals/State";
+import { stateObject } from "@spoonkit/signals/stateObject";
 
-export type iTransaction = ModelValues<TransactionModel>;
+export type iTransaction = Infer<typeof createTransactionModel>;
+export type TransactionModel = ReturnType<typeof createTransactionModel>;
 
-export class TransactionModel {
-  _id = field<string>();
-  type = field<"income" | "expense" | "transfer" | "fractioned">();
-  amount = field<number>();
-  date = field<string>();
-  description = field<string>();
-  account_id = field<string>();
-  forecast_id = field<string>();
-  //
-  transfer_account_id = field<string>();
-  child_transactions = field<iTransaction[]>();
-}
+export const createTransactionModel = () =>
+  stateObject({
+    _id: state<string>(),
+    amount: state<number>(),
+    date: state<string>(),
+    description: state<string>(),
+    category: state<string>(),
+  });

@@ -1,27 +1,25 @@
-import { Entity } from "@spoon-kit-legacy/domain/Entity";
-import { TransactionModel } from "./TransactionModel";
+import { createTransactionModel, iTransaction } from "./TransactionModel";
 import { provide } from "@spoon-kit-legacy/providers/providers";
 import { TransactionApi } from "./TransactionApi";
+import { createTransactionValidator } from "./TransactionValidator";
 
-declare const toAccountEntity: any;
-export class TransactionEntity extends Entity<TransactionModel> {
+export class TransactionEntity {
   private api = provide(TransactionApi);
-  model = new TransactionModel();
+  model = createTransactionModel();
+  validator = createTransactionValidator(this.model);
 
-  //account = toAccountEntity({ _id: this.model.account_id });
-  //account = calc(() => this.api.getAccount(this.model.account_id.get()));
-  async account() {
-    const result = await this.api.getAccount(this.model.account_id.get());
-    return toAccountEntity(result);
+  constructor(transactionData?: iTransaction) {
+    if (transactionData) this.model.set(transactionData);
   }
 
   save() {
-    return this.commit(async (values) => {
-      const response = this.isLocal.get()
-        ? this.api.create(values)
-        : this.api.update(values._id, values);
+    const hasErrors = !this.validator.isValid.get();
+    if (hasErrors) throw new Error("Transaction data is invalid. Cannot save.");
 
-      return response;
-    });
+    const response = this.model._id.get()
+      ? this.api.update(this.model._id.get(), this.model.get())
+      : this.api.create(this.model.get());
+
+    this.model.set(response);
   }
 }
