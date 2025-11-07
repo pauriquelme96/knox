@@ -18,8 +18,8 @@ export function Dialog({ ctrl }: { ctrl: DialogCtrl }) {
     });
 
     return () => {
-      disposeOpen();
-      disposeClose();
+      disposeOpen.unsubscribe();
+      disposeClose.unsubscribe();
     };
   }, []);
 
