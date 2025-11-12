@@ -7,7 +7,7 @@ export class DialogCtrl extends Ctrl {
   public onOpen = emitter<void>();
   public onClose = emitter<void>();
 
-  public open() {
+  public open(...args: any[]) {
     this.onOpen.next();
   }
 

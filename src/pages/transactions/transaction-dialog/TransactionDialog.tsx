@@ -3,8 +3,8 @@ import { TransactionDialogCtrl } from "./TransactionDialogCtrl";
 import { Input } from "src/components/Input/Input";
 import { Button } from "src/components/Button/Button";
 
-export function TransactionDialog() {
-  const { self } = useCtrl(TransactionDialogCtrl);
+export function TransactionDialog({ ctrl }: { ctrl: TransactionDialogCtrl }) {
+  const { self } = useCtrl(ctrl);
 
   return (
     <div className="flex flex-col gap-2">
