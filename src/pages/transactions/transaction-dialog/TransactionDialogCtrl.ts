@@ -2,8 +2,10 @@ import { ButtonCtrl } from "src/components/Button/ButtonCtrl";
 import { DialogCtrl } from "src/components/Dialog/DialogCtrl";
 import { InputCtrl } from "src/components/Input/InputCtrl";
 import { TransactionEntity } from "src/domain/Transaction/TransactionEntity";
+import { TransactionDialog } from "./TransactionDialog";
 
 export class TransactionDialogCtrl extends DialogCtrl {
+  component? = TransactionDialog;
   descriptionInput = new InputCtrl<string>().set({
     type: "text",
     placeholder: "Description...",

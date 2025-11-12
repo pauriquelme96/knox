@@ -1,4 +1,4 @@
-import { useCtrl } from "@spoon-kit-react/useCtrl";
+import { useCtrl } from "@spoonkit/useCtrl";
 import { TransactionDialogCtrl } from "./TransactionDialogCtrl";
 import { Input } from "src/components/Input/Input";
 import { Button } from "src/components/Button/Button";

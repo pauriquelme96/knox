@@ -1,6 +1,6 @@
-import { Ctrl } from "@spoon-kit-legacy/controller/Ctrl";
-import { calc } from "@spoon-kit-legacy/signals/Calc";
-import { state } from "@spoon-kit-legacy/signals/State";
+import { Ctrl } from "@spoonkit/Ctrl";
+import { calc } from "@spoonkit/signals/Calc";
+import { state } from "@spoonkit/signals/State";
 import { ButtonCtrl } from "src/components/Button/ButtonCtrl";
 
 export class HomeCtrl extends Ctrl {
