@@ -1,6 +1,5 @@
-import { useCtrl } from "@spoon-kit-react/useCtrl";
+import { useCtrl } from "@spoonkit/useCtrl";
 import { DialogCtrl } from "./DialogCtrl";
-import { ResolveCtrl } from "@spoon-kit-react/ResolveCtrl";
 import { useEffect, useRef } from "react";
 
 export function Dialog({ ctrl }: { ctrl: DialogCtrl }) {
@@ -18,15 +17,15 @@ export function Dialog({ ctrl }: { ctrl: DialogCtrl }) {
     });
 
     return () => {
-      disposeOpen.unsubscribe();
-      disposeClose.unsubscribe();
+      disposeOpen();
+      disposeClose();
     };
   }, []);
 
   return (
     <dialog ref={dialogRef} className="m-auto">
       <header>{state.title}</header>
-      <ResolveCtrl ctrl={ctrl} />
+      {/* <ResolveCtrl ctrl={ctrl} /> */}
     </dialog>
   );
 }

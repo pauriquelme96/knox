@@ -1,17 +1,17 @@
-import { useCtrl } from "@spoon-kit-react/useCtrl";
+import { useCtrl } from "@spoonkit/useCtrl";
 import { InputCtrl } from "./InputCtrl";
 
 export function Input({ ctrl }: { ctrl: InputCtrl<any> }) {
-  const { state, setState } = useCtrl(ctrl);
+  const { self } = useCtrl(ctrl);
 
   return (
     <div>
       <input
         className="w-full"
-        type={state.type}
-        value={state.value ?? ""}
-        placeholder={state.placeholder}
-        onChange={(e) => setState({ value: e.target.value })}
+        type={self.type.get()}
+        value={self.value.get() ?? ""}
+        placeholder={self.placeholder.get()}
+        onChange={(e) => self.value.set(e.target.value)}
       />
     </div>
   );

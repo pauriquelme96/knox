@@ -1,5 +1,5 @@
 import { createTransactionModel, iTransaction } from "./TransactionModel";
-import { provide } from "@spoon-kit-legacy/providers/providers";
+import { provide } from "@spoonkit/provider";
 import { TransactionApi } from "./TransactionApi";
 import { createTransactionValidator } from "./TransactionValidator";
 

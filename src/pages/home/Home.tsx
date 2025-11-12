@@ -1,13 +1,13 @@
-import { useCtrl } from "@spoon-kit-react/useCtrl";
-import { HomeCtrl } from "./HomeCtrl";
 import { Button } from "src/components/Button/Button";
 import { TransactionsPage } from "../transactions/TransactionsPage";
 import { Deposits } from "../deposits/Deposits";
 import { Debts } from "../debts/Debts";
 import { Forecasts } from "../forecasts/Forecasts";
+import { useCtrl } from "@spoonkit/useCtrl";
+import { HomeCtrl } from "./HomeCtrl";
 
 export function Home() {
-  const { state, self } = useCtrl(HomeCtrl);
+  const { self } = useCtrl(HomeCtrl);
 
   return (
     <div className="flex flex-col gap-3">
@@ -17,10 +17,10 @@ export function Home() {
           <Button key={tab.label.get()} ctrl={tab} />
         ))}
       </div>
-      {state.activeTab === "movements" && <TransactionsPage />}
-      {state.activeTab === "deposits" && <Deposits />}
-      {state.activeTab === "debts" && <Debts />}
-      {state.activeTab === "forecasts" && <Forecasts />}
+      {self.activeTab.get() === "movements" && <TransactionsPage />}
+      {self.activeTab.get() === "deposits" && <Deposits />}
+      {self.activeTab.get() === "debts" && <Debts />}
+      {self.activeTab.get() === "forecasts" && <Forecasts />}
     </div>
   );
 }

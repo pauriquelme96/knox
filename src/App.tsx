@@ -1,12 +1,9 @@
-import { LocalStorageClient } from "./services/LocalStorageClient";
-import { ApiClient } from "./providers/ApiClient/ApiClient";
+import { Home } from "@pages/home/Home";
 import "./App.css";
-import { useRegister } from "@spoon-kit-react/useRegister";
-import { Home } from "./pages/home/Home";
 
 function App() {
-  useRegister(ApiClient, new LocalStorageClient());
-
+  //useRegister(TransactionApi, new TransactionApi());
+  //return "Hello World!";
   return <Home />;
 }
 

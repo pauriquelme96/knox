@@ -1,13 +1,14 @@
-import { Ctrl } from "@spoon-kit-legacy/controller/Ctrl";
-import { provide } from "@spoon-kit-legacy/providers/providers";
-import { TransactionStore } from "src/domain/Transaction/TransactionStore";
+import { Ctrl } from "@spoonkit/Ctrl";
 import { TransactionDialogCtrl } from "./transaction-dialog/TransactionDialogCtrl";
 import { ButtonCtrl } from "src/components/Button/ButtonCtrl";
+import { state } from "@spoonkit/signals/State";
+import { TransactionEntity } from "src/domain/Transaction/TransactionEntity";
+import { provide } from "@spoonkit/provider";
+import { TransactionApi } from "src/domain/Transaction/TransactionApi";
 
 export class TransactionsPageCtrl extends Ctrl {
-  private transactionStore = provide(TransactionStore);
-
-  private transactionList = this.transactionStore.createList();
+  private api = provide(TransactionApi);
+  public list = state<TransactionEntity[]>([]);
 
   public transactionDialog = new TransactionDialogCtrl().set({
     title: "Transaction Dialog",
@@ -21,9 +22,8 @@ export class TransactionsPageCtrl extends Ctrl {
     },
   });
 
-  list = this.transactionList.map((transaction) => transaction.get());
-
   ctrlStart() {
-    this.transactionList.fetch();
+    const transactions = this.api.list();
+    this.list.set(transactions.map((data) => new TransactionEntity(data)));
   }
 }

@@ -1,4 +1,4 @@
-import { useCtrl } from "@spoon-kit-react/useCtrl";
+import { useCtrl } from "@spoonkit/useCtrl";
 import { ButtonCtrl } from "./ButtonCtrl";
 
 export function Button({ ctrl }: { ctrl: ButtonCtrl }) {

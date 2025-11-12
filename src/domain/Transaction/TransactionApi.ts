@@ -13,6 +13,11 @@ export class TransactionApi {
   }
 
   list(): iTransaction[] {
-    return this.api.list();
+    const transactions = this.api.list();
+    return transactions.map((t) => ({
+      ...t,
+      date: new Date(t.date).toISOString(),
+      amount: Number(t.amount),
+    }));
   }
 }
