@@ -4,16 +4,23 @@ import { TransactionModel } from "./TransactionModel";
 export function createTransactionValidator(transaction: TransactionModel) {
   const { description, amount, date, category } = transaction;
 
-  return {
+  const validations = {
     description: calc(() => v(description.get(), isRequired())),
     amount: calc(() => v(amount.get(), isRequired())),
-    date: calc(() => v(date.get(), isRequired())),
-    category: calc(() => v(category.get(), isRequired())),
-    isValid: calc(() =>
-      Object.values(this)
-        .flat()
-        .every((err) => err === null)
-    ),
+    //date: calc(() => v(date.get(), isRequired())),
+    //category: calc(() => v(category.get(), isRequired())),
+  };
+
+  const isValid = calc(() => {
+    return Object.values(validations)
+      .map((validation) => validation.get())
+      .flat()
+      .every((err) => err === null);
+  });
+
+  return {
+    ...validations,
+    isValid,
   };
 }
 

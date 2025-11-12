@@ -5,7 +5,7 @@ export class TransactionApi {
   private api = new LocalStorageClient<iTransaction>("transactions");
 
   create(transaction: iTransaction): iTransaction {
-    return this.api.create({ ...transaction, date: new Date().toISOString() });
+    return this.api.create({ ...transaction, date: new Date() });
   }
 
   update(_id: string, updatedTransaction: iTransaction): iTransaction {
@@ -13,11 +13,6 @@ export class TransactionApi {
   }
 
   list(): iTransaction[] {
-    const transactions = this.api.list();
-    return transactions.map((t) => ({
-      ...t,
-      date: new Date(t.date).toISOString(),
-      amount: Number(t.amount),
-    }));
+    return this.api.list();
   }
 }

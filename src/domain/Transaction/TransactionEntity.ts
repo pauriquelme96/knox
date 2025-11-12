@@ -2,6 +2,7 @@ import { createTransactionModel, iTransaction } from "./TransactionModel";
 import { provide } from "@spoonkit/provider";
 import { TransactionApi } from "./TransactionApi";
 import { createTransactionValidator } from "./TransactionValidator";
+import { initFormatTransaction } from "./TransactionFormatter";
 
 export class TransactionEntity {
   private api = provide(TransactionApi);
@@ -10,6 +11,7 @@ export class TransactionEntity {
 
   constructor(transactionData?: iTransaction) {
     if (transactionData) this.model.set(transactionData);
+    initFormatTransaction(this.model);
   }
 
   save() {

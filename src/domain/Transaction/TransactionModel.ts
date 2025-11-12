@@ -9,7 +9,7 @@ export const createTransactionModel = () =>
   stateObject({
     _id: state<string>(),
     amount: state<number>(),
-    date: state<string>(),
+    date: state<Date>(),
     description: state<string>(),
     category: state<string>(),
   });
