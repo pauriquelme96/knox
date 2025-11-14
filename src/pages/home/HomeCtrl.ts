@@ -20,16 +20,8 @@ export class HomeCtrl extends Ctrl {
       onClick: () => this.activeTab.set("movements"),
     }),
     new ButtonCtrl().set({
-      label: this.calcTabLabel("deposits"),
-      onClick: () => this.activeTab.set("deposits"),
-    }),
-    new ButtonCtrl().set({
-      label: this.calcTabLabel("debts"),
-      onClick: () => this.activeTab.set("debts"),
-    }),
-    new ButtonCtrl().set({
-      label: this.calcTabLabel("forecasts"),
-      onClick: () => this.activeTab.set("forecasts"),
+      label: this.calcTabLabel("budgets"),
+      onClick: () => this.activeTab.set("budgets"),
     }),
   ];
 }

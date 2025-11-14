@@ -1,10 +1,8 @@
 import { Button } from "src/components/Button/Button";
 import { TransactionsPage } from "../transactions/TransactionsPage";
-import { Deposits } from "../deposits/Deposits";
-import { Debts } from "../debts/Debts";
-import { Forecasts } from "../forecasts/Forecasts";
 import { useCtrl } from "@spoonkit/useCtrl";
 import { HomeCtrl } from "./HomeCtrl";
+import { Budget } from "@pages/budgets/Budget";
 
 export function Home() {
   const { self } = useCtrl(HomeCtrl);
@@ -18,9 +16,7 @@ export function Home() {
         ))}
       </div>
       {self.activeTab.get() === "movements" && <TransactionsPage />}
-      {self.activeTab.get() === "deposits" && <Deposits />}
-      {self.activeTab.get() === "debts" && <Debts />}
-      {self.activeTab.get() === "forecasts" && <Forecasts />}
+      {self.activeTab.get() === "budgets" && <Budget />}
     </div>
   );
 }
