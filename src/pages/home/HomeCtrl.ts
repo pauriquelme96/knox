@@ -4,7 +4,7 @@ import { state } from "@spoonkit/signals/State";
 import { ButtonCtrl } from "src/components/Button/ButtonCtrl";
 
 export class HomeCtrl extends Ctrl {
-  public activeTab = state<string>("movements");
+  public activeTab = state<string>("budgets");
 
   private calcTabLabel = (label: string) => {
     return calc(() => {
