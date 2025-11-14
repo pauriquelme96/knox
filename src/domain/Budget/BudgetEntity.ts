@@ -26,13 +26,15 @@ export class BudgetEntity {
     this.api.remove(this.model._id.get());
   }
 
-  addExpense(expense: iExpense) {
-    this.model.expenses.push(expense);
-    this.save();
+  settleExpenseAt(index: number) {
+    const expense = this.model.expenses.at(index).get();
   }
 
-  removeExpense(index: number) {
+  addExpense(expense: iExpense) {
+    this.model.expenses.push(expense);
+  }
+
+  removeExpenseAt(index: number) {
     this.model.expenses.removeAt(index);
-    this.save();
   }
 }
