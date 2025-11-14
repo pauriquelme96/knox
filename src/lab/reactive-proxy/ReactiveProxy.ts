@@ -1,6 +1,6 @@
-import { state, State } from "@spoon-kit-legacy/signals/State";
-import { $batch } from "@spoon-kit-legacy/signals/$batch";
-import { isPlainObject } from "@spoon-kit-legacy/helpers/isPlainObject";
+import { state, State } from "@spoonkit/signals/State";
+import { $batch } from "@spoonkit/signals/$batch";
+import { isPlainObject } from "@spoonkit/isPlainObject";
 
 // ============================================================================
 // SÍMBOLOS INTERNOS (metadata oculta en el proxy)

@@ -1,7 +1,7 @@
-import { isPlainObject } from "@spoon-kit-legacy/helpers/isPlainObject";
-import { $batch } from "@spoon-kit-legacy/signals/$batch";
-import { Calc } from "@spoon-kit-legacy/signals/Calc";
-import { state, State } from "@spoon-kit-legacy/signals/State";
+import { isPlainObject } from "@spoonkit/isPlainObject";
+import { $batch } from "@spoonkit/signals/$batch";
+import { Calc } from "@spoonkit/signals/Calc";
+import { state, State } from "@spoonkit/signals/State";
 import { createReactiveArray } from "src/lab/signals-with-set-get-foo/ReactiveArray";
 
 type Primitive = string | number | boolean | null | undefined | symbol | bigint;

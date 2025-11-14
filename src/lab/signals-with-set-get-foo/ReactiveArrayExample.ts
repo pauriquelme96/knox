@@ -1,6 +1,6 @@
 import { createReactiveArray } from "./ReactiveArray";
-import { calc } from "@spoon-kit-legacy/signals/Calc";
-import { monitor } from "@spoon-kit-legacy/signals/Monitor";
+import { calc } from "@spoonkit/signals/Calc";
+import { monitor } from "@spoonkit/signals/Monitor";
 
 // Ejemplo de uso
 interface Message {

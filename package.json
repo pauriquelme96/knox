@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "deploy": "surge dist apathetic-learning.surge.sh",
     "commit-spk-legacy": "bash scripts/commit-submodule.sh packages/spoon-kit-legacy",
     "commit-spk-react": "bash scripts/commit-submodule.sh packages/spoon-kit-react",
     "sync": "bash scripts/sync-submodule.sh packages/spoon-kit-legacy && bash scripts/sync-submodule.sh packages/spoon-kit-react",

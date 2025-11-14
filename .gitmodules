@@ -1,8 +1,0 @@
-[submodule "packages/spoon-kit-legacy"]
-	path = packages/spoon-kit-legacy
-	url = https://github.com/spoon-kit/legacy.git
-	branch = main
-[submodule "packages/spoon-kit-react"]
-	path = packages/spoon-kit-react
-	url = https://github.com/spoon-kit/react.git
-	branch = main

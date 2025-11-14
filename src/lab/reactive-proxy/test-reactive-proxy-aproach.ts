@@ -1,4 +1,4 @@
-import { monitor } from "@spoon-kit-legacy/signals/Monitor";
+import { monitor } from "@spoonkit/signals/Monitor";
 import { reactive, isReactive, toRaw, getState } from "./ReactiveProxy";
 
 console.log("=".repeat(80));

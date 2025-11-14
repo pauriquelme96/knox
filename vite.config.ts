@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths(), tailwindcss()],
   resolve: {
     alias: {
-      "@spoon-kit-legacy": "/packages/spoon-kit-legacy",
-      "@spoon-kit-react": "/packages/spoon-kit-react",
+      "@spoonkit": "/packages/spoonkit",
     },
+    dedupe: ["react", "react-dom"],
   },
 });

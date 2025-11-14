@@ -1,5 +1,5 @@
-import { state } from "@spoon-kit-legacy/signals/State";
-import { $batch } from "@spoon-kit-legacy/signals/$batch";
+import { state } from "@spoonkit/signals/State";
+import { $batch } from "@spoonkit/signals/$batch";
 
 // Métodos que modifican el array y deben disparar reactividad
 const MUTATING_METHODS = [
