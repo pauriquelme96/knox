@@ -4,19 +4,19 @@ import { IconCtrl } from "@components/Icon/IconCtrl";
 import { Ctrl } from "@spoonkit/Ctrl";
 import { state } from "@spoonkit/signals/State";
 import { emitter } from "@spoonkit/signals/Emitter";
-import { PlaningEntity } from "src/domain/Planing/PlaningEntity";
-import { EditPlaningDialogCtrl } from "../EditPlaningDialog/EditPlaningDialogCtrl";
-import { DeletePlaningDialogCtrl } from "../DeletePlaningDialog/DeletePlaningDialogCtrl";
+import { PlanningEntity } from "src/domain/Planning/PlanningEntity";
+import { EditPlanningDialogCtrl } from "../EditPlanningDialog/EditPlanningDialogCtrl";
+import { DeletePlanningDialogCtrl } from "../DeletePlanningDialog/DeletePlanningDialogCtrl";
 
-export class PlaningItemCtrl extends Ctrl {
-  public title = state<string>(this.planing.model.name);
+export class PlanningItemCtrl extends Ctrl {
+  public title = state<string>(this.planning.model.name);
   public onUpdate = emitter<void>();
 
-  public editDialog = new EditPlaningDialogCtrl(this.planing).set({
+  public editDialog = new EditPlanningDialogCtrl(this.planning).set({
     onSaved: () => this.onUpdate.next(),
   });
 
-  public deleteDialog = new DeletePlaningDialogCtrl(this.planing).set({
+  public deleteDialog = new DeletePlanningDialogCtrl(this.planning).set({
     onDeleted: () => this.onUpdate.next(),
   });
 
@@ -34,10 +34,10 @@ export class PlaningItemCtrl extends Ctrl {
       {
         label: "Duplicar",
         onClick: () => {
-          const newEntity = new PlaningEntity({
-            ...this.planing.model.get(),
+          const newEntity = new PlanningEntity({
+            ...this.planning.model.get(),
             _id: undefined,
-            name: this.planing.model.name.get() + " (Copia)",
+            name: this.planning.model.name.get() + " (Copia)",
           });
 
           newEntity.save();
@@ -46,16 +46,16 @@ export class PlaningItemCtrl extends Ctrl {
       },
       {
         label: "Borrar",
-        onClick: () => this.deleteDialog.open(this.planing),
+        onClick: () => this.deleteDialog.open(this.planning),
       },
     ],
   });
 
-  constructor(public planing: PlaningEntity) {
+  constructor(public planning: PlanningEntity) {
     super();
   }
 
-  public getPlaningId(): string {
-    return this.planing.model._id.get();
+  public getPlanningId(): string {
+    return this.planning.model._id.get();
   }
 }

@@ -2,17 +2,17 @@ import { ButtonCtrl } from "@components/Button/ButtonCtrl";
 import { IconCtrl } from "@components/Icon/IconCtrl";
 import { NavbarCtrl } from "@components/Navbar/NavbarCtrl";
 import { Ctrl } from "@spoonkit/Ctrl";
-import { PlaningItemCtrl } from "./PlaningItem/PlaningItemCtrl";
+import { PlanningItemCtrl } from "./PlanningItem/PlanningItemCtrl";
 import { state } from "@spoonkit/signals/State";
-import { PlaningEntity } from "src/domain/Planing/PlaningEntity";
-import { CreatePlaningDialogCtrl } from "./CreatePlaningDialog/CreatePlaningDialogCtrl";
+import { PlanningEntity } from "src/domain/Planning/PlanningEntity";
+import { CreatePlanningDialogCtrl } from "./CreatePlanningDialog/CreatePlanningDialogCtrl";
 import { provide } from "@spoonkit/provider";
-import { PlaningApi } from "src/domain/Planing/PlaningApi";
+import { PlanningApi } from "src/domain/Planning/PlanningApi";
 
-export class PlaningPageCtrl extends Ctrl {
-  private api = provide(PlaningApi);
+export class PlanningPageCtrl extends Ctrl {
+  private api = provide(PlanningApi);
 
-  public createDialog = new CreatePlaningDialogCtrl().set({
+  public createDialog = new CreatePlanningDialogCtrl().set({
     onCreated: () => this.loadPlannings(),
   });
 
@@ -27,7 +27,7 @@ export class PlaningPageCtrl extends Ctrl {
     }),
   });
 
-  public planingItems = state<PlaningItemCtrl[]>([]);
+  public planningItems = state<PlanningItemCtrl[]>([]);
 
   ctrlStart() {
     this.loadPlannings();
@@ -36,13 +36,13 @@ export class PlaningPageCtrl extends Ctrl {
   private loadPlannings() {
     const plannings = this.api
       .list()
-      .map((p) => new PlaningEntity(p))
+      .map((p) => new PlanningEntity(p))
       .map((e) =>
-        new PlaningItemCtrl(e).set({
+        new PlanningItemCtrl(e).set({
           onUpdate: () => this.loadPlannings(),
         })
       );
 
-    this.planingItems.set(plannings);
+    this.planningItems.set(plannings);
   }
 }

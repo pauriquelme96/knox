@@ -1,17 +1,17 @@
 import { useCtrl } from "@spoonkit/useCtrl";
-import { PlaningItemCtrl } from "./PlaningItemCtrl";
+import { PlanningItemCtrl } from "./PlanningItemCtrl";
 import { Dropdown } from "@components/Dropdown/Dropdown";
 import { Dialog } from "@components/Dialog/Dialog";
 import { useNavigate } from "react-router-dom";
 
-export function PlaningItem({ ctrl }: { ctrl: PlaningItemCtrl }) {
+export function PlanningItem({ ctrl }: { ctrl: PlanningItemCtrl }) {
   const { self } = useCtrl(ctrl);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    const id = self.getPlaningId();
+    const id = self.getPlanningId();
     if (id) {
-      navigate(`/planing/${id}`);
+      navigate(`/planning/${id}`);
     }
   };
 

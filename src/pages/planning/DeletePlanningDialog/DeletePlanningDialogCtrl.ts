@@ -1,15 +1,15 @@
 import { DialogCtrl } from "@components/Dialog/DialogCtrl";
 import { ButtonCtrl } from "@components/Button/ButtonCtrl";
-import { DeletePlaningDialog } from "./DeletePlaningDialog";
+import { DeletePlanningDialog } from "./DeletePlanningDialog";
 import { state } from "@spoonkit/signals/State";
 import { emitter } from "@spoonkit/signals/Emitter";
-import { PlaningEntity } from "src/domain/Planing/PlaningEntity";
+import { PlanningEntity } from "src/domain/Planning/PlanningEntity";
 
-export class DeletePlaningDialogCtrl extends DialogCtrl {
-  component? = DeletePlaningDialog;
+export class DeletePlanningDialogCtrl extends DialogCtrl {
+  component? = DeletePlanningDialog;
 
   title = state<string>("Eliminar planificación");
-  planingName = state<string>(this.planing.model.name);
+  planningName = state<string>(this.planning.model.name);
 
   cancelButton = new ButtonCtrl().set({
     label: "Cancelar",
@@ -25,12 +25,12 @@ export class DeletePlaningDialogCtrl extends DialogCtrl {
 
   onDeleted = emitter<void>();
 
-  constructor(private planing: PlaningEntity) {
+  constructor(private planning: PlanningEntity) {
     super();
   }
 
   private confirmDelete() {
-    this.planing.drop();
+    this.planning.drop();
     this.onDeleted.next();
     super.close();
   }

@@ -6,7 +6,9 @@
       "Bash(git -C /Users/pauriquelme/viasoft/knox diff src/components/Dropdown/Dropdown.tsx src/pages/planing/PlaningItem/PlaningItemCtrl.ts src/pages/planing/PlaningPage.tsx)",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "Bash(npx vite build:*)"
+      "Bash(npx vite build:*)",
+      "Bash(find:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

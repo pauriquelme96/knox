@@ -1,18 +1,18 @@
 import { useCtrl } from "@spoonkit/useCtrl";
-import { PlaningPageCtrl } from "./PlaningPageCtrl";
+import { PlanningPageCtrl } from "./PlanningPageCtrl";
 import { Navbar } from "@components/Navbar/Navbar";
-import { PlaningItem } from "./PlaningItem/PlaningItem";
+import { PlanningItem } from "./PlanningItem/PlanningItem";
 import { Dialog } from "@components/Dialog/Dialog";
 
-export function PlaningPage() {
-  const { self } = useCtrl(PlaningPageCtrl);
+export function PlanningPage() {
+  const { self } = useCtrl(PlanningPageCtrl);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-200 to-slate-100">
       <Navbar ctrl={self.navbar} />
       <div className="mx-auto p-4 space-y-4">
-        {self.planingItems.get().map((itemCtrl) => (
-          <PlaningItem key={itemCtrl.key} ctrl={itemCtrl} />
+        {self.planningItems.get().map((itemCtrl) => (
+          <PlanningItem key={itemCtrl.key} ctrl={itemCtrl} />
         ))}
       </div>
       <Dialog ctrl={self.createDialog} />

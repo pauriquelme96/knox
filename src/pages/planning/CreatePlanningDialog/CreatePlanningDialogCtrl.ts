@@ -1,15 +1,15 @@
 import { DialogCtrl } from "@components/Dialog/DialogCtrl";
 import { InputCtrl } from "@components/Input/InputCtrl";
 import { ButtonCtrl } from "@components/Button/ButtonCtrl";
-import { CreatePlaningDialog } from "./CreatePlaningDialog";
+import { CreatePlanningDialog } from "./CreatePlanningDialog";
 import { emitter } from "@spoonkit/signals/Emitter";
-import { PlaningEntity } from "src/domain/Planing/PlaningEntity";
+import { PlanningEntity } from "src/domain/Planning/PlanningEntity";
 import { state } from "@spoonkit/signals/State";
 
-export class CreatePlaningDialogCtrl extends DialogCtrl {
-  component? = CreatePlaningDialog;
+export class CreatePlanningDialogCtrl extends DialogCtrl {
+  component? = CreatePlanningDialog;
 
-  private planingEntity: PlaningEntity;
+  private planningEntity: PlanningEntity;
 
   title = state<string>("Crear Planificación");
   nameInput = new InputCtrl<string>().set({
@@ -20,7 +20,7 @@ export class CreatePlaningDialogCtrl extends DialogCtrl {
     label: "CREAR",
     color: "neutral",
     onClick: () => {
-      this.planingEntity.save();
+      this.planningEntity.save();
       this.onCreated.next();
       this.close();
     },
@@ -29,8 +29,8 @@ export class CreatePlaningDialogCtrl extends DialogCtrl {
   onCreated = emitter<void>();
 
   public open() {
-    this.planingEntity = new PlaningEntity();
-    this.nameInput.value.set(this.planingEntity.model.name);
+    this.planningEntity = new PlanningEntity();
+    this.nameInput.value.set(this.planningEntity.model.name);
     super.open();
   }
 }
