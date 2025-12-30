@@ -13,7 +13,7 @@ export class PlaningItemCtrl extends Ctrl {
       leftIcon: new IconCtrl().set({ name: "v-ellipsis" }),
       style: "ghost",
     }),
-    align: "start",
+    align: "end",
     items: [
       {
         label: "Edit",

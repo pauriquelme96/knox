@@ -33,8 +33,13 @@ export function Dropdown({ ctrl }: { ctrl: DropdownCtrl }) {
         {state.button && <Button ctrl={state.button} />}
       </div>
       <ul
-        tabIndex={0}
-        className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+        tabIndex={-1}
+        className={[
+          "dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow",
+          state.align === "end" && "right-0",
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
         {state.items?.map((item, index) => (
           <li key={index}>
