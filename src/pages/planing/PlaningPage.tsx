@@ -2,6 +2,7 @@ import { useCtrl } from "@spoonkit/useCtrl";
 import { PlaningPageCtrl } from "./PlaningPageCtrl";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PlaningItem } from "./PlaningItem/PlaningItem";
+import { Dialog } from "@components/Dialog/Dialog";
 
 export function PlaningPage() {
   const { self } = useCtrl(PlaningPageCtrl);
@@ -14,6 +15,7 @@ export function PlaningPage() {
           <PlaningItem key={itemCtrl.key} ctrl={itemCtrl} />
         ))}
       </div>
+      <Dialog ctrl={self.createDialog} />
     </div>
   );
 }
