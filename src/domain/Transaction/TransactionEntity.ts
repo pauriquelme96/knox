@@ -1,4 +1,4 @@
-import { createTransactionModel, iTransaction } from "./TransactionModel";
+import { TransactionModel, iTransaction } from "./TransactionModel";
 import { provide } from "@spoonkit/provider";
 import { TransactionApi } from "./TransactionApi";
 import { createTransactionValidator } from "./TransactionValidator";
@@ -6,7 +6,7 @@ import { initFormatTransaction } from "./TransactionFormatter";
 
 export class TransactionEntity {
   private api = provide(TransactionApi);
-  model = createTransactionModel();
+  model = TransactionModel();
   validator = createTransactionValidator(this.model);
 
   constructor(transactionData?: iTransaction) {

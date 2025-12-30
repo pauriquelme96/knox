@@ -5,7 +5,7 @@ export class TransactionApi {
   private api = new LocalStorageClient<iTransaction>("transactions");
 
   create(transaction: iTransaction): iTransaction {
-    return this.api.create({ ...transaction, date: new Date() });
+    return this.api.create(transaction);
   }
 
   update(_id: string, updatedTransaction: iTransaction): iTransaction {

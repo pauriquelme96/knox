@@ -30,7 +30,7 @@ export function TransactionsPage() {
             key={row.entity.model._id.get()}
           >
             <p className="text-gray-500 col-span-2">
-              {formatDate(row.entity.model.date.get())}
+              {formatDate(row.entity.model.created_date.get())}
             </p>
             <TextLabel ctrl={row.description} />
             <TextLabel ctrl={row.amount} />

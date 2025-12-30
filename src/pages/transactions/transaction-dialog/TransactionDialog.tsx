@@ -7,7 +7,7 @@ export function TransactionDialog({ ctrl }: { ctrl: TransactionDialogCtrl }) {
   const { self } = useCtrl(ctrl);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-6 m-3">
       <Input ctrl={self.amountInput} />
       <div className="w-full">
         <Input ctrl={self.descriptionInput} />

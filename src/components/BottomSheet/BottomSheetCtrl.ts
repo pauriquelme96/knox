@@ -2,7 +2,7 @@ import { Ctrl } from "@spoonkit/Ctrl";
 import { emitter } from "@spoonkit/signals/Emitter";
 import { state } from "@spoonkit/signals/State";
 
-export class DialogCtrl extends Ctrl {
+export class BottomSheetCtrl extends Ctrl {
   public title = state<string>();
   public onOpen = emitter<void>();
   public onClose = emitter<void>();

@@ -7,7 +7,7 @@ export function Input({ ctrl }: { ctrl: InputCtrl<any> }) {
   return (
     <div>
       <input
-        className="w-full"
+        className="w-full input"
         type={self.type.get()}
         value={self.value.get() ?? ""}
         placeholder={self.placeholder.get()}

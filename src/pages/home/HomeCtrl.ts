@@ -1,27 +1,33 @@
+import { DockCtrl } from "@components/Dock/DockCtrl";
+import { IconCtrl } from "@components/Icon/IconCtrl";
+import { TransactionDialogCtrl } from "@pages/transactions/transaction-dialog/TransactionDialogCtrl";
 import { Ctrl } from "@spoonkit/Ctrl";
-import { calc } from "@spoonkit/signals/Calc";
-import { state } from "@spoonkit/signals/State";
-import { ButtonCtrl } from "src/components/Button/ButtonCtrl";
 
 export class HomeCtrl extends Ctrl {
-  public activeTab = state<string>("budgets");
+  public transactionDialog = new TransactionDialogCtrl().set({
+    title: "Transaction Dialog",
+  });
 
-  private calcTabLabel = (label: string) => {
-    return calc(() => {
-      return (
-        this.activeTab.get() === label ? "> " + label : label
-      ).toUpperCase();
-    });
-  };
+  public dock = new DockCtrl().set({
+    items: [
+      {
+        label: "Home",
+        icon: new IconCtrl().set({ name: "house" }),
+        onClick: () => {
+          console.log("Home clicked");
+        },
+      },
+      {
+        label: "Planning",
+        icon: new IconCtrl().set({ name: "landmark" }),
+        onClick: () => {
+          console.log("Planning clicked");
+        },
+      },
+    ],
+  });
 
-  public tabs = [
-    new ButtonCtrl().set({
-      label: this.calcTabLabel("movements"),
-      onClick: () => this.activeTab.set("movements"),
-    }),
-    new ButtonCtrl().set({
-      label: this.calcTabLabel("budgets"),
-      onClick: () => this.activeTab.set("budgets"),
-    }),
-  ];
+  ctrlStart() {
+    //this.transactionDialog.open(new TransactionEntity());
+  }
 }

@@ -1,10 +1,8 @@
-import { Home } from "@pages/home/Home";
 import "./App.css";
+import { PlaningPage } from "@pages/planing/PlaningPage";
 
 function App() {
-  //useRegister(TransactionApi, new TransactionApi());
-  //return "Hello World!";
-  return <Home />;
+  return <PlaningPage />;
 }
 
 export default App;

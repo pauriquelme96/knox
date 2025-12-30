@@ -4,17 +4,23 @@ import { useEffect, useRef } from "react";
 import { ResolveCtrl } from "@spoonkit/ResolveCtrl";
 
 export function Dialog({ ctrl }: { ctrl: DialogCtrl }) {
-  const { state, self } = useCtrl(ctrl);
+  const { self } = useCtrl(ctrl);
 
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const modalId = useRef(
+    `dialog_${Math.random().toString(36).substring(2, 15)}`
+  );
 
   useEffect(() => {
+    const dialog = document.getElementById(
+      modalId.current
+    ) as HTMLDialogElement;
+
     const disposeOpen = self.onOpen.subscribe(() => {
-      dialogRef.current?.showModal();
+      dialog.showModal();
     });
 
     const disposeClose = self.onClose.subscribe(() => {
-      dialogRef.current?.close();
+      dialog.close();
     });
 
     return () => {
@@ -24,9 +30,17 @@ export function Dialog({ ctrl }: { ctrl: DialogCtrl }) {
   }, []);
 
   return (
-    <dialog ref={dialogRef} className="m-auto">
-      <header>{state.title}</header>
-      <ResolveCtrl ctrl={ctrl} />
+    <dialog id={modalId.current} className="modal">
+      <div className="modal-box">
+        <button
+          onClick={() => self.close()}
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        >
+          ✕
+        </button>
+        <h3 className="font-bold text-lg">{self.title.get()}</h3>
+        <ResolveCtrl ctrl={ctrl} />
+      </div>
     </dialog>
   );
 }

@@ -5,7 +5,7 @@ import { State } from "@spoonkit/signals/State";
 import { $batch } from "@spoonkit/signals/$batch";
 
 export const initFormatTransaction = (model: TransactionModel) => {
-  const { description, amount, date } = model;
+  const { description, amount } = model;
 
   // DESCRIPTION
   format(description, (current, set) => {
@@ -19,10 +19,10 @@ export const initFormatTransaction = (model: TransactionModel) => {
   });
 
   // DATE
-  format(date, (current, set) => {
+  /*format(date, (current, set) => {
     if (current instanceof Date) return;
     set(new Date(current));
-  });
+  });*/
 };
 
 function toNumber(current: any, set: (newValue: number) => void) {
